@@ -5,7 +5,6 @@
 #ifndef GSZ_MEMORYPOOL_PAGECACHE_H
 #define GSZ_MEMORYPOOL_PAGECACHE_H
 #include "Common.h"
-#include "ObjectPool.h"
 #include "PageMap.h"
 
 

@@ -106,7 +106,7 @@ void BigAlloc()
 int main()
 {
 	TLSTest();
-	TestObjectPool();
+	//TestObjectPool();
 	TLSTest();
 	cout << sizeof(size_t) << endl;
 	TestConcurrentAlloc1();
@@ -117,7 +117,7 @@ int main()
 	cout << 128 * 1024 << endl;
 	cout << (337 * sizeof(Span))/1024 << endl;
 	cout << 16 * 1024 << endl;
-	cout << SpanList::_n << endl; //337
+	//cout << SpanList::_n << endl; //337
 
 	TCMalloc_PageMap3<64 - PAGE_SHIFT> p;
 

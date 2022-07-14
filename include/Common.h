@@ -13,7 +13,6 @@
 #include <algorithm>
 #include <unordered_map>
 #include <atomic>
-#include "ObjectPool.h"
 
 using std::cout;
 using std::endl;
@@ -29,15 +28,15 @@ static const size_t NPAGES = 129;
 static const size_t PAGE_SHIFT = 13;
 
 #ifdef _WIN64
-typedef unsigned long long PAGE_ID;
+    typedef unsigned long long PAGE_ID;
 #elif _WIN32
-typedef size_t PAGE_ID;
+    typedef size_t PAGE_ID;
 #else
 	//linux
 #endif
 
 #ifdef _WIN32
-#include <Windows.h>
+    #include <Windows.h>
 #else
 //...
 #endif

@@ -25,5 +25,5 @@ private:
 };
 
 //TLS - Thread Local Storage
-static _declspec(thread) ThreadCache* pTLSThreadCache = nullptr;
+static thread_local ThreadCache* pTLSThreadCache = nullptr;
 #endif //GSZ_MEMORYPOOL_THREADCACHE_H
