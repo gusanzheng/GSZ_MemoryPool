@@ -103,6 +103,7 @@ int main()
 	TLSTest();
 	TestObjectPool();
 	TLSTest();
+    cout << sizeof(int) << endl;
 	cout << sizeof(size_t) << endl;
 	TestConcurrentAlloc1();
 	TestConcurrentAlloc2();

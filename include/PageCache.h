@@ -32,13 +32,15 @@ private:
     SpanList _spanLists[N_PAGES];
     //std::unordered_map<PAGE_ID, Span*> _idSpanMap;
     TCMalloc_PageMap1<32 - PAGE_SHIFT> _idSpanMap;
-
     ObjectPool<Span> _spanPool;
-
-    PageCache() //构造函数私有
-    {}
-    PageCache(const PageCache&) = delete; //防拷贝
-
     static PageCache _sInst;
+public:
+    PageCache()=default;
+    ~PageCache()=default;
+    //禁止自动生成拷贝构造，拷贝赋值，移动构造，移动赋值
+    PageCache(const PageCache&) = delete;
+    PageCache& operator=(const PageCache&) = delete;
+    PageCache(PageCache&&) = delete;
+    PageCache&& operator=(PageCache&&) = delete;
 };
 #endif //GSZ_MEMORYPOOL_PAGECACHE_H

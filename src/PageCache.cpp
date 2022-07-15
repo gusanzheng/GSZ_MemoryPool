@@ -3,7 +3,6 @@
 //
 
 #include "PageCache.h"
-//#include "CentralCache.h"
 
 PageCache PageCache::_sInst;
 
@@ -92,19 +91,6 @@ Span* PageCache::NewSpan(size_t k)
 Span* PageCache::MapObjectToSpan(void* obj)
 {
     PAGE_ID id = (PAGE_ID)obj >> PAGE_SHIFT; //页号
-
-    //std::unique_lock<std::mutex> lock(_pageMtx); //构造时加锁，析构时自动解锁
-    //auto ret = _idSpanMap.find(id);
-    //if (ret != _idSpanMap.end())
-    //{
-    //	return ret->second;
-    //}
-    //else
-    //{
-    //	assert(false);
-    //	return nullptr;
-    //}
-
     Span* ret = (Span*)_idSpanMap.get(id);
     assert(ret != nullptr);
     return ret;
