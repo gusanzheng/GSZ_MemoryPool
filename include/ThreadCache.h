@@ -21,9 +21,10 @@ public:
     //释放对象导致链表过长，回收内存到中心缓存
     void ListTooLong(FreeList& list, size_t size);
 private:
-    FreeList _freeLists[NFREELISTS]; //哈希桶
+    FreeList _freeLists[N_FREE_LISTS]; //哈希桶
 };
 
 //TLS - Thread Local Storage
 static thread_local ThreadCache* pTLSThreadCache = nullptr;
+
 #endif //GSZ_MEMORYPOOL_THREADCACHE_H

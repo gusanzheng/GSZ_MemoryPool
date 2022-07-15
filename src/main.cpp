@@ -2,34 +2,30 @@
 #include <ctime>
 #include <vector>
 #include "../include/GszAlloc.h"
-#include <pthread.h>
-#include "GszThread.h"
 
 using namespace std;
 
-void * Alloc1(void *pVoid)
+void Alloc1()
 {
-    for (int i = 0; i < 5; i++)
+    for (size_t i = 0; i < 5; i++)
     {
         void* ptr = ConcurrentAlloc(6);
     }
 }
-void* Alloc2(void *pVoid)
+void Alloc2()
 {
-    for (int i = 0; i < 5; i++)
+    for (size_t i = 0; i < 5; i++)
     {
         void* ptr = ConcurrentAlloc(7);
     }
 }
 void TLSTest()
 {
-    Thread td1;
-    Thread td2;
-    td1.run(Alloc1, nullptr);
-    td2.run(Alloc2, nullptr);
-    td1.join();
-    td2.join();
+    std::thread t1(Alloc1);
+    std::thread t2(Alloc2);
 
+    t1.join();
+    t2.join();
 }
 void TestConcurrentAlloc1()
 {
@@ -57,7 +53,7 @@ void TestConcurrentAlloc2()
     }
     void* p2 = ConcurrentAlloc(6);
 }
-void* MultiThreadAlloc1(void *pVoid)
+void MultiThreadAlloc1()
 {
     std::vector<void*> v;
     for (size_t i = 0; i < 33; i++)
@@ -70,7 +66,7 @@ void* MultiThreadAlloc1(void *pVoid)
     //	ConcurrentFree(e);
     //}
 }
-void* MultiThreadAlloc2(void* pVoid)
+void MultiThreadAlloc2()
 {
     std::vector<void*> v;
     for (size_t i = 0; i < 33; i++)
@@ -85,13 +81,12 @@ void* MultiThreadAlloc2(void* pVoid)
 }
 void MultiThreadAllocTest()
 {
-    Thread td1;
-    Thread td2;
-    td1.run(MultiThreadAlloc1, nullptr);
-    td2.run(MultiThreadAlloc2, nullptr);
-    td1.join();
-    td2.join();
+    std::thread t1(MultiThreadAlloc1);
 
+    std::thread t2(MultiThreadAlloc2);
+
+    t1.join();
+    t2.join();
 }
 void BigAlloc()
 {
@@ -106,7 +101,7 @@ void BigAlloc()
 int main()
 {
 	TLSTest();
-	//TestObjectPool();
+	TestObjectPool();
 	TLSTest();
 	cout << sizeof(size_t) << endl;
 	TestConcurrentAlloc1();

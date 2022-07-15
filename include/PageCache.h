@@ -6,6 +6,7 @@
 #define GSZ_MEMORYPOOL_PAGECACHE_H
 #include "Common.h"
 #include "PageMap.h"
+#include "ObjectPool.h"
 
 
 //单例模式
@@ -28,7 +29,7 @@ public:
 
     std::mutex _pageMtx; //大锁
 private:
-    SpanList _spanLists[NPAGES];
+    SpanList _spanLists[N_PAGES];
     //std::unordered_map<PAGE_ID, Span*> _idSpanMap;
     TCMalloc_PageMap1<32 - PAGE_SHIFT> _idSpanMap;
 

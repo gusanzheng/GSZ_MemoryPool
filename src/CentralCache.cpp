@@ -16,15 +16,15 @@ size_t CentralCache::FetchRangeObj(void*& start, void*& end, size_t n, size_t si
 
     //在对应哈希桶中获取一个非空的span
     Span* span = GetOneSpan(_spanLists[index], size);
-    assert(span); //span不为空
-    assert(span->_freeList); //span当中的自由链表也不为空
+    assert(span); //确定span不为空
+    assert(span->_freeList); //确定span当中的自由链表也不为空
 
     //从span中获取n个对象
     //如果不够n个，有多少拿多少
     start = span->_freeList;
     end = span->_freeList;
     size_t actualNum = 1;
-    while (NextObj(end)&&n - 1)
+    while (NextObj(end) && (n - 1))
     {
         end = NextObj(end);
         actualNum++;

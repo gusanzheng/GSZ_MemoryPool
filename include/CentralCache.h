@@ -20,18 +20,22 @@ public:
     size_t FetchRangeObj(void*& start, void*& end, size_t n, size_t size);
 
     //获取一个非空的span
-    Span* GetOneSpan(SpanList& spanList, size_t size);
+    static Span* GetOneSpan(SpanList& spanList, size_t size);
 
     //将一定数量的对象还给对应的span
     void ReleaseListToSpans(void* start, size_t size);
 private:
-    SpanList _spanLists[NFREELISTS];
+    SpanList _spanLists[N_FREE_LISTS];
+    static CentralCache _sInst; //只有一个单例
 
-private:
-    CentralCache() //构造函数私有
-    {}
-    CentralCache(const CentralCache&) = delete; //防拷贝
+public:
+    CentralCache() = default;
+    ~CentralCache() = default;
+    //禁止自动生成拷贝构造，拷贝赋值，移动构造，移动赋值
+    CentralCache(const CentralCache&) = delete;
+    CentralCache& operator=(const CentralCache&) = delete;
+    CentralCache(CentralCache&&) = delete;
+    CentralCache& operator=(CentralCache&&) = delete;
 
-    static CentralCache _sInst;
 };
 #endif //GSZ_MEMORYPOOL_CENTRALCACHE_H

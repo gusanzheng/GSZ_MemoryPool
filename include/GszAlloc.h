@@ -7,6 +7,7 @@
 #include "Common.h"
 #include "ThreadCache.h"
 #include "PageCache.h"
+#include "ObjectPool.h"
 
 static void* ConcurrentAlloc(size_t size)
 {
