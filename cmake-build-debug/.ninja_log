@@ -1,0 +1,8 @@
+# ninja log v5
+142	31459	6794948016671644	CMakeFiles/GSZ_MemoryPool.dir/src/CentralCache.cpp.obj	c0a51360179b17bd
+0	31476	6794948016788921	CMakeFiles/GSZ_MemoryPool.dir/src/PageCache.cpp.obj	e2efaa98783f1754
+410	4082	6794948678772473	CMakeFiles/GSZ_MemoryPool.dir/src/ThreadCache.cpp.obj	ba1f5a3e10c96af2
+408	4153	6794948679540455	CMakeFiles/GSZ_MemoryPool.dir/src/CentralCache.cpp.obj	c0a51360179b17bd
+403	4161	6794948679769801	CMakeFiles/GSZ_MemoryPool.dir/src/PageCache.cpp.obj	e2efaa98783f1754
+4	2487	6794949076945943	CMakeFiles/GSZ_MemoryPool.dir/src/main.cpp.obj	ff41a56d1ddd475d
+2488	3583	6794949087851917	GSZ_MemoryPool.exe	249ea67ef891586c
